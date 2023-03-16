@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import css from './Contacts.module.css';
 
 
-export default function ContactList ({contacts, onDeleteContact}) {
+export default function ContactList ({contacts, deleteContact}) {
     return (
         <ol className={css.ContactList}>
             {contacts.map(({id, name, number}) => {
@@ -13,7 +13,7 @@ export default function ContactList ({contacts, onDeleteContact}) {
                         {name}: {number}
                         </p>
                         <button className={css.ContactList_btn}
-                        onClick={() => onDeleteContact(id)} 
+                        onClick={() => deleteContact(id)} 
                         type="button">
                         Delete 
                         </button>
