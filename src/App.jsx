@@ -16,16 +16,16 @@ function App() {
   const [filter, setFilter] = useState('')
 
 
-useEffect(() => {
-    const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
-    if (parsedContacts) {
-      setContacts(parsedContacts);
-} 
-}, [])
+  useEffect(() => {
+      const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
+      if (parsedContacts) {
+        setContacts(parsedContacts);
+  } 
+  }, [])
 
-useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(contacts))
-},[contacts])
+  useEffect(() => {
+      localStorage.setItem("contacts", JSON.stringify(contacts))
+  },[contacts]);
  
 
   const formSubmit = data => {
@@ -37,11 +37,11 @@ useEffect(() => {
     }
     else {
          const contact = {
-      ...data,
-      id: nanoid()
-    };
-    setContacts(prevState => [contact, ...prevState])
-    }
+            ...data,
+            id: nanoid()
+          };
+          setContacts(prevState => [contact, ...prevState])
+          }
   }
 
   const deleteContact = (contactId) => {
