@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Contacts.module.css';
 
-export default function ContactList({ contacts, deleteContact }) {
+export default function ContactList({ contacts, onDeleteContact }) {
   return (
     <ol className={css.ContactList}>
       {contacts.map(({ id, name, number }) => {
@@ -13,7 +13,7 @@ export default function ContactList({ contacts, deleteContact }) {
             </p>
             <button
               className={css.ContactList_btn}
-              onClick={() => deleteContact(id)}
+              onClick={() => onDeleteContact(id)}
               type="button"
             >
               Delete
@@ -26,8 +26,12 @@ export default function ContactList({ contacts, deleteContact }) {
 }
 
 ContactList.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string,
-  number: PropTypes.number,
-  onRemoveContact: PropTypes.func,
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+  onDeleteContact: PropTypes.func.isRequired,
 };

@@ -67,7 +67,7 @@ function App() {
       <Filter value={filter} onChange={changeFilter} />
       <ContactList
         contacts={getVisibleContacts()}
-        deleteContact={deleteContact}
+        onDeleteContact={deleteContact}
       />
     </div>
   );
